@@ -169,15 +169,69 @@ void displayGrades(const Student students[], int studentCount) {
 
 // 搜尋學生成績函數
 void searchGrades(const Student students[], int studentCount) {
+    int i;
+    char searchName[100];
+    printf("Enter the name to search: ");
+    scanf("%s", searchName);
+    int found = 0;
+    for (i = 0; i < studentCount; i++) {
+        if (strcmp(students[i].name, searchName) == 0) {
+            printf("Student found:\n");
+            printf("Name: %s\n", students[i].name);
+            printf("ID: %d\n", students[i].id);
+            printf("Math score: %d\n", students[i].math);
+            printf("Physics score: %d\n", students[i].physics);
+            printf("English score: %d\n", students[i].english);
+            printf("Average score: %.1f\n", students[i].average);
+            printf("--------------------\n");
+            found = 1;
+            break;
+        }
+    }
+    if (!found) {
+        printf("Student not found.\n");
+    }
 }
 
 // 成績排名函數
 void gradeRanking(Student students[], int studentCount) {
+    int i, j;
+    Student temp;
+    for (i = 0; i < studentCount - 1; i++) {
+        for (j = 0; j < studentCount - i - 1; j++) {
+            if (students[j].average < students[j + 1].average) {
+                temp = students[j];
+                students[j] = students[j + 1];
+                students[j + 1] = temp;
+            }
+        }
+    }
+    printf("Grade ranking:\n");
+    for (i = 0; i < studentCount; i++) {
+        printf("%d. Name: %s, Average score: %.1f\n", i + 1, students[i].name, students[i].average);
+    }
+    printf("\n");
+    system("pause");
+    system("CLS");
 }
 
 // 退出系統函數
 void exitSystem(int *running) {
-    *running = 0; 
+    char choice;
+    do {
+        printf("確定離開？(y/n): ");
+        choice = _getch(); // 使用 _getch() 獲取單個字符輸入
+        if (choice == 'y' || choice == 'Y') {
+            *running = 0; // 設置 running 為 0 以退出主循環
+            printf("\n系統即將退出...\n");
+        } else if (choice == 'n' || choice == 'N') {
+            printf("\n返回主選單...\n");
+            break; // 返回主選單
+        } else {
+            printf("\n無效輸入，請重新輸入。\n");
+        }
+    } while (choice != 'y' && choice != 'Y' && choice != 'n' && choice != 'N');
 }
+
     
 
