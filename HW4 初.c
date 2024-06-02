@@ -133,13 +133,39 @@ void enterGrades(Student students[], int *studentCount) {
 
     for (i = 0; i < *studentCount; i++) { 
         printf("Enter details for student %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", students[i].name);
+        printf("ID: ");
+        scanf("%d", &students[i].id);
+        printf("Math score: ");
+        scanf("%d", &students[i].math);
+        printf("Physics score: ");
+        scanf("%d", &students[i].physics);
+        printf("English score: ");
+        scanf("%d", &students[i].english);
+        students[i].average = (students[i].math + students[i].physics + students[i].english) / 3.0;
     }
     system("CLS");
 }
 
 // 顯示學生成績函數
 void displayGrades(const Student students[], int studentCount) {
+    int i; 
+    printf("Student grades:\n");
+    for (i = 0; i < studentCount; i++) {
+        printf("Name: %s\n", students[i].name);
+        printf("ID: %d\n", students[i].id);
+        printf("Math score: %d\n", students[i].math);
+        printf("Physics score: %d\n", students[i].physics);
+        printf("English score: %d\n", students[i].english);
+        printf("Average score: %.1f\n", students[i].average);
+        printf("--------------------\n");
+    }
+    printf("\n");
+    system("pause");
+    system("CLS");
 }
+
 
 // 搜尋學生成績函數
 void searchGrades(const Student students[], int studentCount) {
