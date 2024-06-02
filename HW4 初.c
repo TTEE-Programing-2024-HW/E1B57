@@ -5,50 +5,65 @@
 
 int main(void){
 	
-//²Ä¤@ÃD
+//ç¬¬ä¸€é¡Œ
    
-  char myclass[]="E1B";                       //«Å§i¯Z¯Å¦r¦ê 
-  int number=57;                              //«Å§i®y¸¹ÅÜ¼Æ  
-  char name[]="Emma";                         //«Å§i©m¦W¦r¦ê
-  char cartoon[]="Minions";                   //«Å§i¥d³q¦WºÙ¦r¦ê 
+  char myclass[]="E1B";                       //å®£å‘Šç­ç´šå­—ä¸² 
+  int number=57;                              //å®£å‘Šåº§è™Ÿè®Šæ•¸  
+  char name[]="Emma";                         //å®£å‘Šå§“åå­—ä¸²
+  char cartoon[]="Minions";                   //å®£å‘Šå¡é€šåç¨±å­—ä¸² 
   
-  printf("Class¡G%s\n",myclass);               //¿é¥X¯Z¯Å 
+  printf("Classï¼š%s\n",myclass);               //è¼¸å‡ºç­ç´š 
   printf("--------------------\n");
-  printf("Numner¡G%d\n",number);                //¿é¥X®y¸¹ 
+  printf("Numnerï¼š%d\n",number);                //è¼¸å‡ºåº§è™Ÿ 
   printf("--------------------\n");
-  printf("Name¡G%s\n",name);                  //¿é¥X©m¦W 
+  printf("Nameï¼š%s\n",name);                  //è¼¸å‡ºå§“å 
   printf("--------------------\n");
-  printf("My favorite cartoon is¡G%s¡I\n",cartoon);   //¿é¥X¥d³q¦WºÙ 
+  printf("My favorite cartoon isï¼š%sï¼\n",cartoon);   //è¼¸å‡ºå¡é€šåç¨± 
   printf("--------------------\n"); 
   
-  system("pause"); //µe­±¼È°± µ¥«İ¨Ï¥ÎªÌ«ö¥ô·NÁä
+  system("pause"); //ç•«é¢æš«åœ ç­‰å¾…ä½¿ç”¨è€…æŒ‰ä»»æ„éµ
   system("CLS");
   
-  int i,password=0,count; //«Å§iÅÜ¼Æ 
+  int i,password=0,count; //å®£å‘Šè®Šæ•¸ 
 	
-    for(i=0;i<=3;i++){ //¶i¤J°j°é,³Ì¦h¿é¤J¤T¦¸±K½X 
+    for(i=0;i<=3;i++){ //é€²å…¥è¿´åœˆ,æœ€å¤šè¼¸å…¥ä¸‰æ¬¡å¯†ç¢¼ 
 		 
-      printf("Please enter the 4-digit password:"); //¿é¥X´£¥Ü¦r¥y 
-      scanf("%d",&password); //Åª¨ú±K½X 
+      printf("Please enter the 4-digit password:"); //è¼¸å‡ºæç¤ºå­—å¥ 
+      scanf("%d",&password); //è®€å–å¯†ç¢¼ 
     
-      if(password==2024){ //§PÂ_±K½X¬O§_¥¿½T 
-    	printf("The password is correct, welcome! !\n"); //¦L¥X¥¿½T¦r¥y 
+      if(password==2024){ //åˆ¤æ–·å¯†ç¢¼æ˜¯å¦æ­£ç¢º 
+    	printf("The password is correct, welcome! !\n"); //å°å‡ºæ­£ç¢ºå­—å¥ 
     	break;
-	  }else if(password!=2024&&count<3){ //§_«h 
-	    printf("Wrong password¡I");
+	  }else if(password!=2024&&count<3){ //å¦å‰‡ 
+	    printf("Wrong passwordï¼");
 	    count++;
-		} //¿ù»~¦¸¼Æ¥[¤@ 
-		else{ //§PÂ_¿é¤J¿ù»~¦¸¼Æ¬O§_¶W¹L¤T¦¸ 
-		  printf("Wrong password three times¡I",'\a'); //¦L¥X¿ù»~¦r¥y 
-		  system("pause"); //µe­±¼È°± 
-	    return 0; //µ²§ôµ{¦¡ 
+		} //éŒ¯èª¤æ¬¡æ•¸åŠ ä¸€ 
+		else{ //åˆ¤æ–·è¼¸å…¥éŒ¯èª¤æ¬¡æ•¸æ˜¯å¦è¶…éä¸‰æ¬¡ 
+		  printf("Wrong password three timesï¼",'\a'); //å°å‡ºéŒ¯èª¤å­—å¥ 
+		  system("pause"); //ç•«é¢æš«åœ 
+	    return 0; //çµæŸç¨‹å¼ 
 	    }
 	}
-	system("pause"); //µe­±¼È°± µ¥«İ¨Ï¥ÎªÌ«ö¥ô·NÁä 
-	system("CLS"); //²M°£¿Ã¹õ
+	system("pause"); //ç•«é¢æš«åœ ç­‰å¾…ä½¿ç”¨è€…æŒ‰ä»»æ„éµ 
+	system("CLS"); //æ¸…é™¤è¢å¹•
 	
-//²Ä¤G¤TÃD 
+//ç¬¬äºŒä¸‰é¡Œ 
+	
+typedef struct{
+    char name[100];
+    int id;
+    int math;
+    int physics;
+    int english;
+    float average;
+}Student;  //å­¸ç”Ÿçµæ§‹
 
+void displayMenu();
+void enterGrades(Student students[], int *studentCount);
+void displayGrades(const Student students[], int studentCount);
+void searchGrades(const Student students[], int studentCount);
+void gradeRanking(Student students[], int studentCount);
+void exitSystem(int *running);
 	 
 	
 }
