@@ -9,7 +9,8 @@ int main1(){
   char myclass[]="E1B";                       
   int number=57;                             
   char name[]="Emma";                         
-  char cartoon[]="Minions";                   
+  char cartoon[]="Minions";      
+  //宣告班級,座號,姓名,卡通名稱             
   
   printf("Class：%s\n",myclass);               
   printf("--------------------\n");
@@ -23,19 +24,19 @@ int main1(){
   system("pause"); 
   system("CLS");
   
-  int i,password=0,count; 
+  int i,password=0,count;  
  
-    for(i=0;i<=3;i++){ 
+    for(i=0;i<=3;i++){ //密碼輸入最多三次
    
       printf("Please enter the 4-digit password:"); 
-      scanf("%d",&password); 
+      scanf("%d",&password); //讀取密碼 
     
-      if(password==2024){ 
+      if(password==2024){  //密碼是否正確 
      printf("The password is correct, welcome! !\n"); 
      break;
-   }else if(password!=2024&&count<3){ 
+   }else if(password!=2024&&count<3){ //密碼錯誤在三次以下 
      printf("Wrong password！");
-     count++;
+     count++; //錯誤次數加一 
   } 
   else{ 
     printf("Wrong password three times！",'\a'); 
@@ -56,9 +57,9 @@ typedef struct {
     int physics;
     int english;
     float average;
-} Student;  
+} Student;  //定義學生結構 
 
-// 函數宣告
+// 函式宣告
 void displayMenu();
 void enterGrades(Student students[], int *studentCount);
 void displayGrades(const Student students[], int studentCount);
@@ -67,28 +68,28 @@ void gradeRanking(Student students[], int studentCount);
 void exitSystem(int *running);
 
 int main() {
-    const int MAX_STUDENTS = 10; 
-    Student students[MAX_STUDENTS]; 
-    int studentCount = 0; 
-    int running = 1; 
+    const int MAX_STUDENTS = 10;  //最大學生數量 
+    Student students[MAX_STUDENTS];  //學生陣列 
+    int studentCount = 0;  //宣告學生數量 
+    int running = 1;  //系統運行狀態,1為turn 
 
     while (running) {
-        displayMenu(); 
+        displayMenu();  //顯示主選單 
         char choice;
         scanf(" %c", &choice); 
 
         switch (choice) {
             case 'a':
                 system("CLS"); 
-                enterGrades(students, &studentCount); 
+                enterGrades(students, &studentCount); //輸入學生成績 
                 break;
             case 'b':
                 system("CLS"); 
-                displayGrades(students, studentCount); 
-                break;
+                displayGrades(students, studentCount);  //顯示學生成績 
+                break;  
             case 'c':
                 system("CLS");
-                searchGrades(students, studentCount); 
+                searchGrades(students, studentCount);  //搜尋學生成績 
                 break;
             case 'd':
                 system("CLS"); 
@@ -99,7 +100,7 @@ int main() {
                 exitSystem(&running); 
                 break;
             default:
-                printf("Invalid choice! Please try again.\n"); 
+                printf("Invalid choice! Please try again.\n");  //無效選擇 
                 break;
         }
     }
@@ -126,12 +127,12 @@ void enterGrades(Student students[], int *studentCount) {
     printf("Enter the number of students (5-10): ");
     scanf("%d", studentCount); 
 
-    while (*studentCount < 5 || *studentCount > 10) { 
+    while (*studentCount < 5 || *studentCount > 10) { //是否在5到10之間 
         printf("Invalid input. Please enter a number between 5 and 10: ");
         scanf("%d", studentCount); 
     }
 
-    for (i = 0; i < *studentCount; i++) { 
+    for (i = 0; i < *studentCount; i++) { //輸入學生資訊 
         printf("Enter details for student %d:\n", i + 1);
         printf("Name: ");
         scanf("%s", students[i].name);
@@ -166,7 +167,6 @@ void displayGrades(const Student students[], int studentCount) {
     system("CLS");
 }
 
-
 // 搜尋學生成績函數
 void searchGrades(const Student students[], int studentCount) {
     int i;
@@ -196,7 +196,7 @@ void searchGrades(const Student students[], int studentCount) {
 // 成績排名函數
 void gradeRanking(Student students[], int studentCount) {
     int i, j;
-    Student temp;
+    Student temp;  
     for (i = 0; i < studentCount - 1; i++) {
         for (j = 0; j < studentCount - i - 1; j++) {
             if (students[j].average < students[j + 1].average) {
@@ -206,7 +206,7 @@ void gradeRanking(Student students[], int studentCount) {
             }
         }
     }
-    printf("Grade ranking:\n");
+    printf("Grade ranking:\n"); //顯示經排序後的學生 
     for (i = 0; i < studentCount; i++) {
         printf("%d. Name: %s, Average score: %.1f\n", i + 1, students[i].name, students[i].average);
     }
@@ -220,18 +220,19 @@ void exitSystem(int *running) {
     char choice;
     do {
         printf("確定離開？(y/n): ");
-        choice = _getch(); // 使用 _getch() 獲取單個字符輸入
+        choice = _getch(); 
         if (choice == 'y' || choice == 'Y') {
             *running = 0; // 設置 running 為 0 以退出主循環
             printf("\n系統即將退出...\n");
         } else if (choice == 'n' || choice == 'N') {
             printf("\n返回主選單...\n");
-            break; // 返回主選單
+            break; 
         } else {
             printf("\n無效輸入，請重新輸入。\n");
         }
     } while (choice != 'y' && choice != 'Y' && choice != 'n' && choice != 'N');
 }
+
 
 /*這次的程式作業對我來說蠻困難的,很多地方都是查了很多資料看了很多範例才重新修改成可以編譯過的
 例如一個程式中有兩個主函式,還有不同函式要怎麼宣告變數,以及中間讀取學生資料那裡也是改了好久,
